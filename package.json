@@ -1,0 +1,209 @@
+{
+  "name": "@dot-event/kubes",
+  "version": "0.0.1",
+  "description": "dot-event kubernetes operation",
+  "keywords": [
+    "dot-event",
+    "operation"
+  ],
+  "author": "dot-event <oss@dot-event.io>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dot-event/kubes.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/dot-event/kubes#readme",
+  "operations": {
+    "link": {},
+    "spawn": {},
+    "starter": {},
+    "version": {},
+    "watchman": {
+      "triggers": [
+        {
+          "name": "babel",
+          "expression": [
+            "anyof",
+            [
+              "match",
+              "lib/**/*.js",
+              "wholename"
+            ]
+          ],
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "7.1.5",
+    "dot-event": "2.12.6",
+    "@dot-event/argv": "2.10.6",
+    "@dot-event/fs": "1.11.7",
+    "@dot-event/log": "0.13.2",
+    "@dot-event/spawn": "2.6.8",
+    "@dot-event/store": "6.0.5",
+    "@dot-event/task": "1.11.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.5",
+    "@babel/core": "7.1.6",
+    "@babel/preset-env": "7.1.6",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.1.0",
+    "rimraf": "2.6.2",
+    "babel-eslint": "10.0.1",
+    "eslint": "5.9.0",
+    "eslint-config-prettier": "3.3.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "prettier": "1.15.2",
+    "husky": "1.2.0",
+    "lint-staged": "8.1.0",
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "23.6.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "8"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-transform-runtime"
+    ]
+  },
+  "main": "dist/kubes.js",
+  "scripts": {
+    "build": "babel lib --out-dir dist --source-maps",
+    "prepublishOnly": "rimraf dist; npm run build",
+    "watch": "rimraf dist; babel lib --watch --out-dir dist --source-maps",
+    "fix": "npm run lint -- --fix",
+    "lint": "eslint --ignore-path .gitignore --ext=js .",
+    "pretty": "prettier --write **/*.css **/*.json **/*.md",
+    "test": "jest"
+  },
+  "bin": {
+    "dot-kubes": "./bin/dot-kubes"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      },
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "rules": {
+      "curly": "error",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 60,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }
+      ],
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "react/display-name": "off",
+      "react/no-find-dom-node": "off",
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "semi": [
+        "error",
+        "never"
+      ],
+      "sort-keys": [
+        "error",
+        "asc",
+        {
+          "caseSensitive": true,
+          "natural": false
+        }
+      ],
+      "sort-vars": [
+        "error",
+        {
+          "ignoreCase": true
+        }
+      ],
+      "strict": 0
+    }
+  },
+  "prettier": {
+    "printWidth": 60,
+    "semi": false,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/*Test.js"
+    ],
+    "testEnvironment": "node"
+  }
+}
