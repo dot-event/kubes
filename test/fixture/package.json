@@ -1,7 +1,8 @@
 {
   "operations": {
     "kubes": {
-      "glob": "yaml/**/*.yaml"
+      "glob": "yaml/**/*.yaml",
+      "test": true
     }
   }
 }

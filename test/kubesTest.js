@@ -28,6 +28,13 @@ beforeEach(async () => {
 
   events.onAny({
     "before.fsWriteYaml": cancel,
+    "before.gcloudConfigRead": ({ event }) => {
+      cancel({ event })
+      event.signal.returnValue = {
+        clusters: { test: {} },
+        pg: {},
+      }
+    },
   })
 })
 
@@ -38,7 +45,7 @@ test("build", async () => {
     calls.push(event.options)
   )
 
-  await run("--build")
+  await run("-b --cluster=test")
 
   expect(calls).toContainEqual({
     ensure: true,
