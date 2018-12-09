@@ -45,7 +45,7 @@ test("build", async () => {
     calls.push(event.options)
   )
 
-  await run("-b --cluster=test")
+  await run("-b", "--cluster=test")
 
   expect(calls).toContainEqual({
     ensure: true,
