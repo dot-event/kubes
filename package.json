@@ -43,6 +43,7 @@
   "dependencies": {
     "@babel/runtime": "7.2.0",
     "@dot-event/argv": "2.10.8",
+    "@dot-event/aws": "0.0.1",
     "@dot-event/fs": "1.11.15",
     "@dot-event/gcloud": "0.0.5",
     "@dot-event/log": "0.13.4",
