@@ -45,7 +45,7 @@
     "@dot-event/argv": "2.10.8",
     "@dot-event/aws": "0.0.6",
     "@dot-event/fs": "1.11.19",
-    "@dot-event/gcloud": "0.0.9",
+    "@dot-event/gcloud": "0.0.10",
     "@dot-event/log": "0.13.5",
     "@dot-event/spawn": "2.6.21",
     "@dot-event/status": "0.0.5",
