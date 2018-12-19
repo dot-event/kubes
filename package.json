@@ -1,6 +1,6 @@
 {
   "name": "@dot-event/kubes",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "dot-event kubernetes operation",
   "keywords": [
     "dot-event",
@@ -43,9 +43,9 @@
   "dependencies": {
     "@babel/runtime": "7.2.0",
     "@dot-event/argv": "2.10.8",
-    "@dot-event/aws": "0.0.12",
+    "@dot-event/aws": "0.0.13",
     "@dot-event/fs": "1.11.25",
-    "@dot-event/gcloud": "0.0.16",
+    "@dot-event/gcloud": "0.0.17",
     "@dot-event/log": "0.13.5",
     "@dot-event/spawn": "2.6.27",
     "@dot-event/status": "0.0.5",
