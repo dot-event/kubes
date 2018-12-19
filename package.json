@@ -1,6 +1,6 @@
 {
   "name": "@dot-event/kubes",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "dot-event kubernetes operation",
   "keywords": [
     "dot-event",
