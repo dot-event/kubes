@@ -31,8 +31,9 @@ beforeEach(async () => {
     "before.gcloudConfigRead": ({ event }) => {
       cancel({ event })
       event.signal.returnValue = {
-        clusters: { test: {} },
+        clusters: { test: { env: "test" } },
         pg: {},
+        services: { test: {} },
       }
     },
   })
